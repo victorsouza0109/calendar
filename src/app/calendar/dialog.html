@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Event</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+        <mat-label>Event Title</mat-label>
+        <input matInput [(ngModel)]="data.titleEvent">
+    </mat-form-field>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+        <mat-label>Event Day</mat-label>
+        <input matInput [(ngModel)]="data.date" disabled>
+    </mat-form-field>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="data.description"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>Ok</button>
+</div>

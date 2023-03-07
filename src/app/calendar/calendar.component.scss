@@ -1,0 +1,63 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.calendar-title {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    text-align: center;
+
+    button {
+        cursor: pointer;
+    }
+}
+
+.calendar-title-month-year {
+    font-size: 24px;
+}
+
+.calendar-days {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+
+}
+
+.calendar-days div {
+    border: 1px solid #cccccc6c;
+    font-size: 24px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.calendar-days div:hover {
+    background-color: #aaaaaa31;
+}
+
+.calendar-day-not-part-current-month {
+    color: #aaa;
+}
+
+.event {
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 5%;
+
+    tr {
+        cursor: pointer;
+    }
+
+    tr:hover {
+        background-color: #aaaaaa60;
+    }
+}

@@ -1,0 +1,8 @@
+<h2>{{data.titleEvent}}</h2>
+<label>Event day</label>
+<h3>{{data.date | date: 'YYYY-MM-dd' }}</h3>
+<label>Description</label>
+<h3>{{data.description}}</h3>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial color="warn">cancel this event</button>
+</div>

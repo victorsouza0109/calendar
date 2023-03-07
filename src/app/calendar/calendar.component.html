@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="calendar-title">
+        <div>
+            <button mat-fab color="primary" aria-label="Previous" (click)="changeMonth(-1)">
+                <mat-icon>skip_previous</mat-icon>
+            </button>
+        </div>
+        <div class="calendar-title-month-year">{{currentDate | date : 'MMM yyyy'}}</div>
+        <div>
+            <button mat-fab color="primary" aria-label="Next" (click)="changeMonth(+1)">
+                <mat-icon>skip_next</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="calendar-days example-boundary">
+        <ng-container *ngFor="let dia of calendarDays; let i = index">
+            <div *ngIf="i < 7">
+                <strong>{{ dia | date: 'EEEEE' }}</strong>
+            </div>
+        </ng-container>
+        <div *ngFor="let dia of calendarDays; let i = index" class="calendar-day"
+            [class.calendario-quebrar-linha]="i % 7 === 0"
+            [class.calendar-day-not-part-current-month]="currentDate.getMonth() !== dia.getMonth()"
+            (click)="openDialog(dia)" cdkDropList>
+            {{dia | date : 'dd'}}
+        </div>
+
+        <section class="example-box event" cdkDragBoundary=".example-boundary" cdkDrag *ngFor="let item of events"
+            (click)="openDialogEvent(item)">
+        </section>
+    </div>
+    <div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="titleEvent">
+                <th mat-header-cell *matHeaderCellDef> title Event </th>
+                <td mat-cell *matCellDef="let element"> {{element.titleEvent}} </td>
+            </ng-container>
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.date | date : 'YYYY-MM-dd'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> description </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+            <ng-container matColumnDef="event">
+                <th mat-header-cell *matHeaderCellDef> Delete Event </th>
+                <td mat-cell *matCellDef="let element"> <button mat-mini-fab color="warn"
+                        (click)="deleteEvent(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialogEvent(row)"></tr>
+        </table>
+
+
+    </div>
+</div>
